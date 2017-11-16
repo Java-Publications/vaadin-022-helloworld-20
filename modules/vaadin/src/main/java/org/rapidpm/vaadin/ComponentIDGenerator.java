@@ -6,6 +6,7 @@ import java.util.function.BiFunction;
 import org.rapidpm.frp.functions.TriFunction;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.Grid;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.PasswordField;
@@ -22,6 +23,10 @@ public interface ComponentIDGenerator {
             + "-" + componentClass.getSimpleName()
             + "-" + label.replace(" ", "-"))
         .toLowerCase(Locale.US);
+  }
+
+  static BiFunction<Class, String, String> gridID() {
+    return (uiClass, label) -> genericID().apply(uiClass, Grid.class, label);
   }
 
   static BiFunction<Class, String, String> buttonID() {

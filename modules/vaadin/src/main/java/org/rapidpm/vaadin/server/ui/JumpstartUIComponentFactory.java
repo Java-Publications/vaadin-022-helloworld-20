@@ -17,9 +17,15 @@
  * under the License.
  */
 
-package org.rapidpm.microservice.optionals.header;
+package org.rapidpm.vaadin.server.ui;
+
+import java.io.Serializable;
+
+import com.vaadin.server.VaadinRequest;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.ComponentContainer;
 
 @FunctionalInterface
-public interface HeaderInfo {
-  String createHeaderInfo();
+public interface JumpstartUIComponentFactory extends Serializable {
+  Component createComponentToSetAsContent(VaadinRequest vaadinRequest);
 }

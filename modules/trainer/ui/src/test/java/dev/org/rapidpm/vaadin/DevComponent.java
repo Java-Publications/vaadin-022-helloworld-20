@@ -2,15 +2,21 @@ package dev.org.rapidpm.vaadin;
 
 import com.vaadin.ui.*;
 import org.rapidpm.ddi.DI;
+import org.rapidpm.frp.functions.CheckedFunction;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.lang.System.getProperty;
+
 /**
  *
  */
 public class DevComponent extends Composite {
+
+  public static final String SELECTED_CLASS = "selected.class";
+
 
   private final VerticalLayout  mainLayout         = new VerticalLayout();
   private final Panel           testComponentPanel = new Panel("Component Test Area");
@@ -44,13 +50,30 @@ public class DevComponent extends Composite {
     final List<Class> classStream = DI.getSubTypesWithoutInterfacesAndGeneratedOf(Composite.class)
                                       .stream()
                                       .filter(aClass -> aClass.getName().contains("org.rapidpm.vaadin"))
-                                      .filter(aClass -> !aClass.getName().contains("dev.org.rapidpm.vaadin"))
+                                      .filter(aClass -> !aClass.getName().contains(this.getClass().getPackage().getName()))
                                       .collect(Collectors.toList());
 
     classComboBox.setItems(classStream);
 
 
+    try {
+      final Class<?> aClass = Class.forName(System.getProperty(SELECTED_CLASS));
+      classComboBox.setValue(aClass);
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    }
+
+
+
+    // explain in blog
+    ((CheckedFunction<String, Class>) Class::forName)
+        .apply(getProperty(SELECTED_CLASS))
+        .ifPresent(classComboBox::setValue);
+
+//    ((CheckedFunction<String, Class>) Class::forName)
+//        .apply(getProperty(SELECTED_CLASS))
+//        .ifPresent(classComboBox::setValue);
+
     setCompositionRoot(mainLayout);
-//    setSizeFull();
   }
 }

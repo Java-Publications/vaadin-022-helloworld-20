@@ -49,12 +49,20 @@ public class PropertyServiceInMemory implements PropertyService {
     storage.put("menu.point.exit", "Logout");
     storage.put("menu.point.exit.message", "You want to go?");
 
+    storage.put("dashboard.component.btn.clickme", "ClickME");
+    storage.put("dashboard.component.btn.label", "Dashboard");
+
+
     storage.put("calc.component.btn.next", "Next");
     storage.put("calc.component.btn.ok", "Ok");
     storage.put("calc.component.chart.result.title", "Results");
     storage.put("calc.component.chart.result.good", ":-)");
     storage.put("calc.component.chart.result.bad", ":-(");
     storage.put("calc.component.chart.result.yAxis", "Amount");
+
+    storage.put("report.component.statistics.grid.column.forename", "Fore Name");
+    storage.put("report.component.statistics.grid.column.familyname", "Family Name");
+    storage.put("report.component.statistics.grid.column.lastlogin", "Last Login");
 
 
 

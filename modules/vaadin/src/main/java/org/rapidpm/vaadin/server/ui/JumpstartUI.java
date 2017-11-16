@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package org.rapidpm.vaadin.server;
+package org.rapidpm.vaadin.server.ui;
 
 import javax.inject.Inject;
 

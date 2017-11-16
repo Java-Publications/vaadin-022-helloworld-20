@@ -5,8 +5,8 @@ import static java.lang.System.getProperties;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
-import org.rapidpm.microservice.MainUndertow;
 import com.vaadin.testbench.HasDriver;
+import org.rapidpm.microservice.MainUndertow;
 
 /**
  *

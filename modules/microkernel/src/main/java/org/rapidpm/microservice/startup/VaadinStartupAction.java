@@ -5,14 +5,15 @@ import org.rapidpm.microservice.MainUndertow;
 
 import java.util.Optional;
 
+import static java.lang.System.setProperty;
+import static org.rapidpm.microservice.MainUndertow.SHIRO_ACTIVE_PROPERTY;
+
 /**
  *
  */
 public class VaadinStartupAction implements Main.MainStartupAction {
   @Override
   public void execute(Optional<String[]> args) {
-
-    System.setProperty(MainUndertow.SHIRO_ACTIVE_PROPERTY, "true");
-
+    setProperty(SHIRO_ACTIVE_PROPERTY, "true");
   }
 }

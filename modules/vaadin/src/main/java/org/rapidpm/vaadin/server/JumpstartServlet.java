@@ -25,6 +25,8 @@ import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 
+import org.rapidpm.vaadin.server.ddi.DDIVaadinServlet;
+import org.rapidpm.vaadin.server.ui.JumpstartUI;
 import com.vaadin.annotations.VaadinServletConfiguration;
 
 @WebServlet(

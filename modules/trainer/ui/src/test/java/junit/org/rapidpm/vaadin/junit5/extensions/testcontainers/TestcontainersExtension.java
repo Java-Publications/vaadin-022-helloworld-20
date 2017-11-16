@@ -50,7 +50,7 @@ public class TestcontainersExtension
   }
 
   @Override
-  public void beforeEach(ExtensionContext context) throws Exception {
+  public void beforeEach(ExtensionContext context) {
     BrowserWebDriverContainer webDriverContainer
         = new BrowserWebDriverContainer()
         .withDesiredCapabilities(DesiredCapabilities.chrome()); // only one per container
@@ -66,7 +66,7 @@ public class TestcontainersExtension
 
   @Override
 //  public void afterEach(TestExtensionContext context) throws Exception {
-  public void afterEach(ExtensionContext context) throws Exception {
+  public void afterEach(ExtensionContext context){
     testcontainer().apply(context).stop();
     removeTestcontainer().accept(context);
     removeWebDriver();

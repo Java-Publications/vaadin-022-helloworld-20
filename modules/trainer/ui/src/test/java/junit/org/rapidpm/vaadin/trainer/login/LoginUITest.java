@@ -1,6 +1,7 @@
 package junit.org.rapidpm.vaadin.trainer.login;
 
 import static org.rapidpm.vaadin.ComponentIDGenerator.buttonID;
+import static org.rapidpm.vaadin.trainer.modules.mainview.menu.MenuComponent.MENU_POINT_DASHBOARD;
 
 import java.util.function.Supplier;
 
@@ -45,15 +46,14 @@ public class LoginUITest {
   void test001(@PageObject LoginUIPageObject pageObject) {
     pageObject.loadPage();
 
-    final TextFieldElement textFieldElement = pageObject.login.get();
-    textFieldElement.setValue("root");
-    pageObject.password.get().setValue("secret");
+    pageObject.login.get().setValue("sven");
+    pageObject.password.get().setValue("sven");
 
     pageObject.buttonOK.get().click();
 
     // Assert if new layout is loaded
     // the Caption "Dashboard" is not refactoring safe
-    ButtonElement dashboard = pageObject.btn().id(buttonID().apply(MenuComponent.class, "Dashboard"));
+    ButtonElement dashboard = pageObject.btn().id(buttonID().apply(MenuComponent.class, MENU_POINT_DASHBOARD));
     Assert.assertNotNull(dashboard);
   }
 

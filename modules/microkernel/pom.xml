@@ -12,4 +12,11 @@
   <artifactId>helloworld-modules-microkernel</artifactId>
 
 
+  <dependencies>
+    <dependency>
+      <groupId>org.rapidpm.microservice</groupId>
+      <artifactId>rapidpm-microservice-modules-core</artifactId>
+    </dependency>
+  </dependencies>
+
 </project>

@@ -21,13 +21,14 @@ package org.rapidpm.vaadin.server;
 
 import javax.inject.Inject;
 
+import org.rapidpm.vaadin.server.ui.JumpstartUIComponentFactory;
 import org.rapidpm.vaadin.trainer.modules.login.LoginComponent;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Component;
 
 public class MyUIComponentFactory implements JumpstartUIComponentFactory {
 
-  @Inject LoginComponent loginScreen;
+  private @Inject LoginComponent loginScreen;
 
   @Override
   public Component createComponentToSetAsContent(final VaadinRequest vaadinRequest) {

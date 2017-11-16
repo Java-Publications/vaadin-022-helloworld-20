@@ -21,17 +21,18 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <vaadin.version>8.1.0</vaadin.version>
+    <vaadin.version>8.1.6</vaadin.version>
     <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
 
     <ddi.version>0.9.1</ddi.version>
+    <rpm-microservice.version>1.0.0-SNAPSHOT</rpm-microservice.version>
 
 
     <selenium.version>3.4.0</selenium.version>
 
     <!--TDD jUnit5-->
     <junit.version>4.12</junit.version>
-    <junit.jupiter.version>5.0.0</junit.jupiter.version>
+    <junit.jupiter.version>5.0.2</junit.jupiter.version>
     <junit.vintage.version>${junit.version}.0</junit.vintage.version>
     <junit.platform.version>1.0.0-RC3</junit.platform.version>
 
@@ -108,9 +109,9 @@
       </dependency>
 
       <dependency>
-        <groupId>org.rapidpm.dynamic-cdi</groupId>
-        <artifactId>rapidpm-dynamic-cdi-bom</artifactId>
-        <version>${ddi.version}</version>
+        <groupId>org.rapidpm.microservice</groupId>
+        <artifactId>rapidpm-microservice-bom</artifactId>
+        <version>${rpm-microservice.version}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
@@ -128,6 +129,12 @@
         <groupId>com.vaadin</groupId>
         <artifactId>vaadin-charts</artifactId>
         <version>4.0.0</version>
+        <exclusions>
+          <exclusion>
+              <groupId>commons-io</groupId>
+              <artifactId>commons-io</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
 
       <!--Vaadin AddOns-->
@@ -137,32 +144,21 @@
         <version>3.2.0</version>
       </dependency>
 
-      <!--RapidPM - Microservice-->
-      <!--<dependency>-->
-      <!--<groupId>org.rapidpm.microservice</groupId>-->
-      <!--<artifactId>rapidpm-microservice-modules-core</artifactId>-->
-      <!--<version>0.9.0-SNAPSHOT</version>-->
-      <!--</dependency>-->
-
-      <!--Microkernel related-->
-      <!--Undertow-->
+      <!--RapidPM-->
       <dependency>
-        <groupId>io.undertow</groupId>
-        <artifactId>undertow-core</artifactId>
-        <version>1.4.20.Final</version>
+        <groupId>org.rapidpm</groupId>
+        <artifactId>rapidpm-dependencies-core-logger</artifactId>
+        <version>3.5.3-SNAPSHOT</version>
       </dependency>
-      <dependency>
-        <groupId>io.undertow</groupId>
-        <artifactId>undertow-servlet</artifactId>
-        <version>1.4.20.Final</version>
-      </dependency>
-      <!--Undertow-->
-
-      <!--DDI-->
       <dependency>
         <groupId>org.rapidpm.dynamic-cdi</groupId>
         <artifactId>rapidpm-dynamic-cdi-modules-core</artifactId>
         <version>${ddi.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.rapidpm.microservice</groupId>
+        <artifactId>rapidpm-microservice-modules-core</artifactId>
+        <version>${rpm-microservice.version}</version>
       </dependency>
       <!--DDI-->
 
@@ -170,7 +166,7 @@
       <dependency>
         <groupId>org.testcontainers</groupId>
         <artifactId>selenium</artifactId>
-        <version>1.4.2</version>
+        <version>1.4.3</version>
         <scope>test</scope>
         <exclusions>
           <exclusion>
@@ -196,18 +192,6 @@
       <groupId>org.rapidpm.dynamic-cdi</groupId>
       <artifactId>rapidpm-dynamic-cdi-modules-core</artifactId>
     </dependency>
-
-    <!--Microkernel related-->
-    <!--Undertow-->
-    <dependency>
-      <groupId>io.undertow</groupId>
-      <artifactId>undertow-core</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.undertow</groupId>
-      <artifactId>undertow-servlet</artifactId>
-    </dependency>
-    <!--Undertow-->
 
     <!--security -->
     <dependency>
@@ -255,6 +239,13 @@
     <!--<version>-SNAPSHOT</version>-->
     <!--</dependency>-->
     <!--Logging-->
+
+    <dependency>
+      <groupId>org.rapidpm</groupId>
+      <artifactId>rapidpm-dependencies-core-logger</artifactId>
+      <version>3.5.3-SNAPSHOT</version>
+    </dependency>
+
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
@@ -274,7 +265,7 @@
     <dependency>
       <groupId>org.rapidpm</groupId>
       <artifactId>rapidpm-functional-reactive</artifactId>
-      <version>0.0.6</version>
+      <version>0.1.0-SNAPSHOT</version>
     </dependency>
 
 
@@ -297,7 +288,19 @@
     </dependency>
   </dependencies>
 
+
+
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.vaadin</groupId>
+          <artifactId>vaadin-maven-plugin</artifactId>
+          <version>${vaadin.version}</version>
+        </plugin>
+      </plugins>
+
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
