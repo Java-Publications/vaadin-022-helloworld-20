@@ -25,7 +25,7 @@
     <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
 
     <ddi.version>0.9.1</ddi.version>
-    <rpm-microservice.version>1.0.0-SNAPSHOT</rpm-microservice.version>
+    <rpm-microservice.version>1.0.0</rpm-microservice.version>
 
 
     <selenium.version>3.4.0</selenium.version>
@@ -148,7 +148,7 @@
       <dependency>
         <groupId>org.rapidpm</groupId>
         <artifactId>rapidpm-dependencies-core-logger</artifactId>
-        <version>3.5.3-SNAPSHOT</version>
+        <version>3.5.3</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm.dynamic-cdi</groupId>
@@ -243,7 +243,7 @@
     <dependency>
       <groupId>org.rapidpm</groupId>
       <artifactId>rapidpm-dependencies-core-logger</artifactId>
-      <version>3.5.3-SNAPSHOT</version>
+      <version>3.5.3</version>
     </dependency>
 
     <dependency>
@@ -265,7 +265,7 @@
     <dependency>
       <groupId>org.rapidpm</groupId>
       <artifactId>rapidpm-functional-reactive</artifactId>
-      <version>0.1.0-SNAPSHOT</version>
+      <version>0.1.0</version>
     </dependency>
 
 
